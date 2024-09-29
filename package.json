@@ -29,11 +29,7 @@
     "@types/uuid": "^10.0.0",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.14.1",
-<<<<<<< HEAD
     "pg": "^8.13.0",
-=======
-    "pg": "^8.12.0",
->>>>>>> 840a82138da515e5b222d4fb4442dbe8b9b5a232
     "reflect-metadata": "^0.2.0",
     "rxjs": "^7.8.1",
     "typeorm": "^0.3.20",

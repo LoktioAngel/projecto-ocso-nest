@@ -1,14 +1,26 @@
 {
   "compilerOptions": {
+<<<<<<< HEAD
+=======
+    "module": "commonjs",
+>>>>>>> 840a82138da515e5b222d4fb4442dbe8b9b5a232
     "declaration": true,
     "removeComments": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
+<<<<<<< HEAD
     "target": "ES2021",
     "module": "commonjs",
     "sourceMap": true,
     "outDir": "./dist",
     "rootDir": "./",
+=======
+    "allowSyntheticDefaultImports": true,
+    "target": "ES2021",
+    "sourceMap": true,
+    "outDir": "./dist",
+    "baseUrl": "./",
+>>>>>>> 840a82138da515e5b222d4fb4442dbe8b9b5a232
     "incremental": true,
     "skipLibCheck": true,
     "strictNullChecks": false,

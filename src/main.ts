@@ -9,7 +9,7 @@ async function bootstrap() {
     .setTitle('Ocso API')
     .setDescription('Apu for ocso management')
     .setVersion('0.9')
-    .addTag('cats')
+    .addBearerAuth()
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);

@@ -21,13 +21,18 @@ export class AuthController {
   @Post("login")
   async login(@Body() loginUserDto :LoginUserDto, @Res({passthrough: true}) response: Response, @Cookies() cookies: any){
     const token = await this.authService.loginUser(loginUserDto)
-    console.log('token', token)
+    let expireDate= new Date()
+    expireDate.setDate(expireDate.getDate()+7)
+    console.log(token)
     response.cookie(TOKEN_NAME, token, {
       httpOnly: false,
       secure: true,
       sameSite: 'none',
+      expires: expireDate,
       maxAge: 1000 * 60 * 60 * 24 * 7
+      
     });
+    
     return;
   }
   @Patch("/:email")

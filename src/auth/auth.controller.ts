@@ -30,7 +30,6 @@ export class AuthController {
       sameSite: 'none',
       expires: expireDate,
       maxAge: 1000 * 60 * 60 * 24 * 7
-      
     });
     
     return;

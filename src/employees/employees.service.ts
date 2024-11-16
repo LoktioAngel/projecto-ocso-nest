@@ -19,7 +19,11 @@ export class EmployeesService {
   }
 
   findAll() {
-    return this.employeeRepository.find();
+    return this.employeeRepository.find({
+      relations:{
+        location: true
+      }
+    });
   }
 
   findByLocation(id: number){
@@ -31,12 +35,17 @@ export class EmployeesService {
   }
 
   findOne(id: string) {
-    const employee = this.employeeRepository.findOneBy({
-      employeeId: id,
+    const employee = this.employeeRepository.findOne({
+      where: {
+        employeeId: id
+      },
+      relations: {
+        location: true,
+      }
     });
-    if (!employee) throw new NotFoundException();
     return employee;
   }
+  
 
   async update(id: string, updateEmployeeDto: UpdateEmployeeDto) {
     const employeeToUpdate = await this.employeeRepository.preload({

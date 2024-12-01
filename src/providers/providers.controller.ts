@@ -47,7 +47,7 @@ export class ProvidersController {
   update(@Param('id') id: string, @Body() updateProviderDto: UpdateProviderDto) {
     return this.providersService.update(id, updateProviderDto);
   }
-  @Auth(ROLES.MANAGER)
+  @Auth(ROLES.EMPLOYEE, ROLES.MANAGER)
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.providersService.remove(id);

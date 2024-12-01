@@ -1,38 +1,35 @@
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm"
-import { Product } from "../../products/entities/product.entity";
-import { ApiProperty} from "@nestjs/swagger";
+import { ApiProperty } from "@nestjs/swagger";
+import { Product } from "src/products/entities/product.entity";
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export class Provider {
-    @ApiProperty({
-        default:"UUID"
-    })
-    @PrimaryGeneratedColumn('uuid')
-    providerId: string;
+  @PrimaryGeneratedColumn("uuid")
+  providerId: string;
 
-    @ApiProperty({
-        default: "ProviderAngel"
-    })
-    @Column('text')
-    providerName: string;
+  @ApiProperty({
+    default: "Coca-cola",
+  })
+  @Column("text")
+  providerName: string;
 
-    @ApiProperty({
-        default: "provideremail@gmail.com"
-    })
-    @Column('text',{
-        unique: true,
-    })
-    providerEmail: string;
+  @ApiProperty({
+    default: "Coca-cola@example.com",
+  })
+  @Column("text", {
+    unique: true,
+  })
+  providerEmail: string;
 
-    @ApiProperty({
-        default: "4426131618"
-    })
-    @Column({
-        type: "text",
-        nullable: true,
-    })
-    providerPhoneNumber: string;
-    @OneToMany(() => Product, (photo) => photo.provider)
-    products: Product[];
+  @ApiProperty({
+    default: "123456789",
+  })
+  @Column({
+    type: "text",
+    nullable: true,
+  })
+  providerPhoneNumber: string;
 
+  @OneToMany(() => Product, (product) => product.provider)
+  products: Product[];
 }

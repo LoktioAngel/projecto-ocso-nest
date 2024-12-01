@@ -1,51 +1,33 @@
-import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { Location } from 'src/locations/entities/location.entity'; 
-import { User } from 'src/auth/entities/user.entity';
-import { ApiProperty } from '@nestjs/swagger';
+import { User } from "src/auth/entities/user.entity";
+import { Location } from "src/locations/entities/location.entity";
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  OneToOne,
+  PrimaryGeneratedColumn,
+} from "typeorm";
 
 @Entity()
 export class Manager {
-   @ApiProperty({
-      default: "UUID"
-   })
-   @PrimaryGeneratedColumn('uuid')
-   managerId: string;
-
-   @ApiProperty({
-      default: "Angel Gabriel"
-   })
-   @Column('text')
-   managerFullName: string;
-
-   @ApiProperty({
-      default: "2000"
-   })
-   @Column('float')
-   managerSalary: number;
-
-   @ApiProperty({
-      default:"manager@gmail.com"
-   })
-   @Column('text',{
+  @PrimaryGeneratedColumn("uuid")
+  managerId: string;
+  @Column("text")
+  managerFullName: string;
+  @Column("float")
+  managerSalary: number;
+  @Column("text", {
     unique: true,
-   })
-   managerEmail: string;
+  })
+  managerEmail: string;
+  @Column("text")
+  managerPhoneNumber: string;
 
-   @ApiProperty({
-      default: "4426131618"
-   })
-   @Column('text')
-   managerPhoneNumber: string;
+  @OneToOne(() => Location, { onDelete: "SET NULL", nullable: true })
+  @JoinColumn({ name: "locationId" })
+  location: Location | string;
 
-   @OneToOne(()=> Location)
-   @JoinColumn({
-      name: "locationId"
-   })
-   location: Location | string;
-
-   @OneToOne(() => User)
-   @JoinColumn({
-    name: "UserId"
-   })
-   user: User
+  @OneToOne(() => User, { onDelete: "SET NULL", nullable: true })
+  @JoinColumn({ name: "userId" })
+  user: User;
 }
